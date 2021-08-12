@@ -1,0 +1,62 @@
+{% extends "donate/main.html" %} 
+{% load static %}
+ {% block body%}
+ {% include "donate/components/navbar.html" %}
+<div class="backcover">
+  <div class="form-contain">
+    
+    <div class="pb-3 text-md-start fs-2">Plasma Donate</div>
+    <form method="POST" action="" class="row g-3">
+      {% csrf_token %}
+      <div class="col-md-6 mt-1">
+        <label class="form-label">Name</label>
+        {{form.name }}
+      </div>
+      <div class="col-md-6 mt-1">
+        <label class="form-label">Email</label>
+        {{form.email }}
+      </div>
+      <div class="col-md-6 mt-1">
+        <label class="form-label">Age</label>
+        {{form.age }}
+      </div>
+      <div class="form-check col-md-6 mt-1">
+        <label class="form-check-label" for="inlineCheckbox1">Gender</label>
+        {{form.gender }}
+      </div>
+      <div class="form-check col-12 mt-1">
+        <label class="form-check-label" for="inlineCheckbox1">Blood Group</label>
+        {{form.blood_group }}
+      </div>
+      <div class="col-md-6 mt-1">
+        <label class="form-label">Weight</label>
+        {{form.weight }}
+      </div>
+      <div class="col-md-6 mt-1">
+        <label class="form-label">Tested negative on</label>
+        <img style="position: relative; left: 50%; top: 47%;" src="{% static '/donate/cal.png'%}" width="auto" height="29px" alt="">
+        {{form.negative_tested_on }}
+      </div>
+      <div class="col-md-6 mt-1">
+        <label class="form-label">City</label>
+        {{form.city }}
+      </div>
+      <div class="col-md-6 mt-1"></div>
+      <div class="col-md-6 mt-1">
+        <label class="form-label">Donation Center</label>
+        {{form.donate_center }}
+      </div>
+
+      <input type="submit" name="Create User" class="submit" value="submit" />
+    </form>
+    <script>
+      $(function () {
+        $("#id_negative_tested_on").datepicker({ format: 'mm/dd/yyyy' });
+      });
+    </script>
+  </div >
+  
+    
+  
+</div>
+{% endblock %}

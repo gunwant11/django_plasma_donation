@@ -1,0 +1,105 @@
+{% extends "donate/main.html" %}
+{% load static %} 
+{% block body%}
+<header>
+  <div class="top">
+    <div class="nav-user">
+      {% if user.is_authenticated%}
+      <a href="{% url 'logout' %}">logout</a>
+      {% else %}
+      <a href="{% url 'login' %}">Login</a>
+      <a href="{% url 'signup' %}">Sign up</a>
+      {% endif %}
+    </div>
+    {% if messages %}
+    <ul style="
+      position: relative;
+      left: 50%;
+      top: 50px; 
+      width: 350px;
+      border-radius: 4px; 
+      border: 2px solid rgb(0, 196, 0); 
+      background-color: rgb(239, 253, 239);
+      padding: 5px;
+      transform: translateX(-50%);
+        ">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="px-4 py-5 text-center">
+      <img class="d-block mx-auto mb-2" src="{% static '/donate/5.png' %}" alt="" width="auto" height="250px"/>
+      <h1 class="display-5 fw-bold">Donate Plasma</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+          Donating plasma can save lives. Your antibodies can help someone
+          fight the infection and emerge victoriously. If your COVID symptoms
+          have been absent for more than 14 days, kindly consider donating plasma.
+          Just like during any regular blood donation session, blood will be drawn from your arm.
+          It will be sent through special tubes that will separate the plasma from the blood.
+        </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <a href="{% url 'donate' %}">
+            <button type="button" class="btn btn-light me-sm-2">
+              Donar Registration
+            </button>
+          </a>
+          <a href="{% url 'dashboard' %}">
+            <button type="button" class="btn btn-outline-dark">
+              Register as a Patient
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<section>
+  <div class="container">{% include "donate/components/stats.html" %}</div>
+
+  <div class="">
+    <div class="bor">
+      <div class="index-text">
+        <h4>Convalescent plasma</h4>
+        Plasma is a component of our blood. Nearly 55% of your blood is plasma. It is yellow in colour. Laboratories can separate plasma from blood with special devices called plasma tubes through a process called centrifugation.
+        What makes plasma a candidate for COVID cure is that it contains antibodies. When your body has fought an infection, the antibodies produced are stored in the plasma. That means if you’ve contracted COVID, then antibodies that can fight the COVID infection will be present in your plasma. The plasma from a person who has recovered from a disease is called convalescent plasma.
+        Doctors have found evidence that injecting a person who has been infected with COVID with convalescent plasma from someone who has recovered from COVID can help the patient heal faster. 
+      </div>
+      <div>
+        <img class="content-img" src="{% static '/donate/img1.jpg' %}" height="280px" alt="" />
+      </div>
+    </div>
+    <div class="bor">
+      <div>
+        <img class="content-img" src="{% static '/donate/img2.jpg' %}" height="280px"  alt="" />
+      </div>
+      <div class="index-text">
+        <h4>Who can donate?</h4>
+        Well, the first criterion of course is that you need to be a COVID survivor. You can donate 28 days after complete recovery. 
+        In India, women between the ages of 18-55 years can donate plasma only if they have never been pregnant.
+        All male COVID survivors in the 18-55 age group can donate plasma.
+        Donating while you are still battling the infection is not a good idea because you haven’t generated enough antibodies and the ones that you have will be needed by you to kill the virus. 
+        According to the FDA, the best time to donate is about 2 weeks after you have completely recovered from your COVID infection. 
+      </div>
+    </div>
+    <div class="bor">
+      <div class="index-text">
+        <h4>Things to remember before you donate plasma</h4>
+        <ul>
+          <li>Do not drink alcohol for at least 24 hours before you donate blood.</li>
+          <li>Alcohol remains in your system for about a day and end up in the blood that is collected from you.</li>
+          <li>Besides alcohol acts as a blood thinner, so there could be a lot of bleeding when you are hooked to the blood extraction device.</li>
+          <li>Do not smoke or consume heavy meals/greasy foods before plasma donation.</li>
+          <li>Do not pop an aspirin or any kind of pain-relieving medication for 48 hours before the donation. These medicines affect your blood’s platelets.</li>
+        </ul> 
+        
+      </div>
+      <div>
+        <img class="content-img" src="{% static '/donate/img3.jpg' %}" height="280px"  alt="" />
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
